@@ -1,22 +1,33 @@
 <?php
 
+// +----------------------------------------------------------------------
+// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2006~2023 http://thinkphp.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: zhangyajun <448901948@qq.com>
+// +----------------------------------------------------------------------
+
 namespace thinkphp\paginator\driver;
 
 use think\Paginator;
 
 /**
- * Bootstrap 分页驱动
+ * Bootstrap 分页驱动.
  */
 class Bootstrap extends Paginator
 {
     /**
-     * 上一页按钮
+     * 上一页按钮.
+     *
      * @param string $text
+     *
      * @return string
      */
-    protected function getPreviousButton(string $text = ''): string
+    protected function getPreviousButton(string $text = '&laquo;'): string
     {
-        $text = empty($text) ? $this->options['previous_text'] : $text;
         if ($this->currentPage() <= 1) {
             return $this->getDisabledTextWrapper($text);
         }
@@ -29,13 +40,14 @@ class Bootstrap extends Paginator
     }
 
     /**
-     * 下一页按钮
+     * 下一页按钮.
+     *
      * @param string $text
+     *
      * @return string
      */
-    protected function getNextButton(string $text = ''): string
+    protected function getNextButton(string $text = '&raquo;'): string
     {
-        $text = empty($text) ? $this->options['next_text'] : $text;
         if (!$this->hasMore) {
             return $this->getDisabledTextWrapper($text);
         }
@@ -46,7 +58,8 @@ class Bootstrap extends Paginator
     }
 
     /**
-     * 页码按钮
+     * 页码按钮.
+     *
      * @return string
      */
     protected function getLinks(): string
@@ -56,9 +69,9 @@ class Bootstrap extends Paginator
         }
 
         $block = [
-            'first' => null,
+            'first'  => null,
             'slider' => null,
-            'last' => null,
+            'last'   => null,
         ];
 
         $side = 3;
@@ -98,7 +111,8 @@ class Bootstrap extends Paginator
     }
 
     /**
-     * 渲染分页html
+     * 渲染分页html.
+     *
      * @return mixed
      */
     public function render()
@@ -122,10 +136,11 @@ class Bootstrap extends Paginator
     }
 
     /**
-     * 生成一个可点击的按钮
+     * 生成一个可点击的按钮.
      *
      * @param string $url
      * @param string $page
+     *
      * @return string
      */
     protected function getAvailablePageWrapper(string $url, string $page): string
@@ -134,9 +149,10 @@ class Bootstrap extends Paginator
     }
 
     /**
-     * 生成一个禁用的按钮
+     * 生成一个禁用的按钮.
      *
      * @param string $text
+     *
      * @return string
      */
     protected function getDisabledTextWrapper(string $text): string
@@ -145,9 +161,10 @@ class Bootstrap extends Paginator
     }
 
     /**
-     * 生成一个激活的按钮
+     * 生成一个激活的按钮.
      *
      * @param string $text
+     *
      * @return string
      */
     protected function getActivePageWrapper(string $text): string
@@ -156,7 +173,7 @@ class Bootstrap extends Paginator
     }
 
     /**
-     * 生成省略号按钮
+     * 生成省略号按钮.
      *
      * @return string
      */
@@ -169,6 +186,7 @@ class Bootstrap extends Paginator
      * 批量生成页码按钮.
      *
      * @param array $urls
+     *
      * @return string
      */
     protected function getUrlLinks(array $urls): string
@@ -183,10 +201,11 @@ class Bootstrap extends Paginator
     }
 
     /**
-     * 生成普通页码按钮
+     * 生成普通页码按钮.
      *
      * @param string $url
      * @param string $page
+     *
      * @return string
      */
     protected function getPageLinkWrapper(string $url, string $page): string
